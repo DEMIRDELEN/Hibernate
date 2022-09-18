@@ -4,12 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "soru_detayi")
-public class QuestionDetail {
+public class QuestionDetail extends BaseEntity{
 
     @Column(name = "Soru_Tanımı")
     private String description;
 
-    @OneToOne(mappedBy = "questionDetail", orphanRemoval = true, optional = false, cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
+    @OneToOne(orphanRemoval = true, cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
     private Question question;
 
 

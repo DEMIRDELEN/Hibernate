@@ -14,7 +14,7 @@ public class BaseEntity {
 	
 	@Id
 	@GeneratedValue(generator = "sequence", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(name = "sequence",sequenceName = "student_seq",initialValue=1000, allocationSize = 10)
+	@SequenceGenerator(name = "sequence",sequenceName = "student_seq",initialValue=1, allocationSize = 10)
 	private Long id;
 	
 	@Column(name="create_on")

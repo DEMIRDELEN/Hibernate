@@ -6,30 +6,29 @@ import java.util.List;
 
 @Entity
 @Table(name = "Sorular")
-public class Question {
+public class Question extends BaseEntity{
 
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "Oncelik_derecesi")
     private Priority priority;
     @Column(name = "Soru_ismi")
     private String name;
 
-    @OneToOne(orphanRemoval = true, optional = false, cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
-    @JoinColumn(nullable = false, unique = true)
+    @OneToOne(mappedBy = "question", orphanRemoval = true, cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
+    //@JoinColumn(nullable = false, unique = true)
     private QuestionDetail questionDetail;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "question", cascade = {CascadeType.REMOVE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private List<Answer> answers = new ArrayList<>();
 
     public Question() {
     }
 
-    public Question(Priority priority, String name, QuestionDetail questionDetail, List<Answer> answers) {
+    public Question(Priority priority, String name) {
         this.priority = priority;
         this.name = name;
-        this.questionDetail = questionDetail;
-        this.answers = answers;
     }
-
 
     public String getName() {
         return name;
@@ -37,6 +36,14 @@ public class Question {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
     }
 
     public QuestionDetail getQuestionDetail() {
@@ -61,6 +68,6 @@ public class Question {
                 "\nPriority: " + priority +
                 "\nName: " + name +
                 "\nQuestionDetail: " + questionDetail +
-                "\nAnswers: " + answers ;
+                "\nAnswers: " + answers;
     }
 }

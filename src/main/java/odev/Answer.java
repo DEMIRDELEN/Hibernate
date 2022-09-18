@@ -4,32 +4,32 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cevaplar")
-public class Answer {
+public class Answer extends BaseEntity{
 
-    @Column(name = "Cevap_ismi")
-    private String isim;
+    @Column(name = "Cevap_ismi",length = 100)
+    private String name;
 
     @Column(name = "cevap_açıklamaları")
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "Soru", nullable = false, unique = true)
+    @JoinColumn(name = "Soru")
     private Question question;
 
     public Answer() {
     }
 
     public Answer(String isim, String description) {
-        this.isim = isim;
+        this.name = isim;
         this.description = description;
     }
 
-    public String getIsim() {
-        return isim;
+    public String getName() {
+        return name;
     }
 
-    public void setIsim(String isim) {
-        this.isim = isim;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -51,7 +51,7 @@ public class Answer {
     @Override
     public String toString() {
         return "Answer" +
-                "\nisim: " + isim +
+                "\nisim: " + name +
                 "\nDescription: " + description +
                 "\nQuestion: " + question ;
     }
