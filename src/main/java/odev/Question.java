@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity (name = "Sorular")
+//@NamedQueries({
+//        @NamedQuery(name = "Question.findAll", query = "from Question"),
+//        @NamedQuery(name = "Question.findById", query = "from Question where id=:id"),
+//        @NamedQuery(name = "Question.findByName", query = "from Question where name=:name"),
+//        @NamedQuery(name = "Question.findByPriority", query = "from Question where priority=:priority")})
 public class Question extends BaseEntity{
 
 
@@ -64,9 +69,7 @@ public class Question extends BaseEntity{
     @Override
     public String toString() {
         return "Question" +
-                "\nPriority: " + priority +
-                "\nName: " + name +
-                "\nQuestionDetail: " + questionDetail +
-                "\nAnswers: " + answers;
+                "\npriority: " + priority +
+                "\nname: " + name ;
     }
 }
