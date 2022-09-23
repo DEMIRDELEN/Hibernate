@@ -1,6 +1,7 @@
 package group_project;
 
 import Deneme1.WorkPlace;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Yazilimci")
-public class Developers {
+public class Developers extends BaseEntity {
 
     @Column(name = "isim")
     private String name;
@@ -24,7 +25,7 @@ public class Developers {
     @Column(name = "email_adresi")
     private String email;
 
-    @ManyToMany( cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "Ortak_Tablo",
             joinColumns = {@JoinColumn(

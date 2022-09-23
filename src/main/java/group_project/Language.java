@@ -6,7 +6,7 @@ import java.util.List;
 
 
 @Entity(name = "yazilim_dili")
-public class Language {
+public class Language extends BaseEntity {
 
     @Column(name = "yazilim_dilleri")
     private String software_languages;
@@ -40,7 +40,7 @@ public class Language {
     @Override
     public String toString() {
         return "Language" +
-                "\nsoftware_languages: " + software_languages ;
+                "\nsoftware_languages: " + software_languages;
     }
 }
 
